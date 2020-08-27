@@ -7,13 +7,13 @@ vehicleID INT PRIMARY KEY IDENTITY(100,1) NOT NULL,
 fuelType VARCHAR(1) NOT NULL,
 vehicleMake VARCHAR(50) NOT NULL,
 vehicleType VARCHAR(50) NOT NULL,
-noOfKiloMeters INT,
-ratePerKiloMeter REAL,
 );
 
 CREATE TABLE Invoice(
 invoiceID INT PRIMARY KEY IDENTITY(1001,1) NOT NULL,
 vehicleID INT NOT NULL,
+noOfKiloMeters INT,
+ratePerKiloMeter REAL,
 seatingCapacity INT,
 loadInKG REAL,
 ratePerKG REAL,
@@ -23,3 +23,4 @@ FOREIGN KEY (vehicleID) REFERENCES Vehicle(vehicleID) ON DELETE CASCADE ON UPDAT
 
 select * from Vehicle;
 select * from Invoice;
+
