@@ -180,8 +180,8 @@ namespace Automate_Transport_Billing_Database
             try
             {
                 mini.validateEntry();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Vehicle VALUES (@fuelType, @vehicleMake, @vehicleType,@noOfKm, @ratePerKM);" +
-                    "INSERT INTO Invoice (vehicleID, seatingCapacity, billAmount) VALUES (SCOPE_IDENTITY(), @seatCap, @billAmount)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO Vehicle VALUES (@fuelType, @vehicleMake, @vehicleType);" +
+                    "INSERT INTO Invoice (vehicleID,noOfKiloMeters,ratePerKiloMeter, seatingCapacity, billAmount) VALUES (SCOPE_IDENTITY(),@noOfKm, @ratePerKM, @seatCap, @billAmount)", con);
                 cmd.Parameters.AddWithValue("@fuelType", mini.getFuelType());
                 cmd.Parameters.AddWithValue("@vehicleMake", mini.getVehicleMake());
                 cmd.Parameters.AddWithValue("@vehicleType", mini.getVehicleType());
@@ -211,8 +211,8 @@ namespace Automate_Transport_Billing_Database
             try
             {
                 maxi.validateEntry();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Vehicle VALUES (@fuelType, @vehicleMake, @vehicleType,@noOfKm, @ratePerKM);" +
-                    "INSERT INTO Invoice (vehicleID,loadInKG, ratePerKG , billAmount) VALUES (SCOPE_IDENTITY(), @load,@ratePerKG, @billAmount)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO Vehicle VALUES (@fuelType, @vehicleMake, @vehicleType);" +
+                    "INSERT INTO Invoice (vehicleID,noOfKiloMeters,ratePerKiloMeter,loadInKG, ratePerKG , billAmount) VALUES (SCOPE_IDENTITY(),@noOfKm, @ratePerKM, @load,@ratePerKG, @billAmount)", con);
                 cmd.Parameters.AddWithValue("@fuelType", maxi.getFuelType());
                 cmd.Parameters.AddWithValue("@vehicleMake", maxi.getVehicleMake());
                 cmd.Parameters.AddWithValue("@vehicleType", maxi.getVehicleType());
@@ -245,8 +245,8 @@ namespace Automate_Transport_Billing_Database
             try
             {
                 mini.validateEntry();
-                SqlCommand cmd = new SqlCommand("UPDATE Vehicle SET fuelType = @fuelType, vehicleMake= @vehicleMake,vehicleType = @vehicleType, noOfKiloMeters = @noOfKm,ratePerKiloMeter =@ratePerKM where vehicleID = @vehicleID;" +
-                    "UPDATE Invoice SET seatingCapacity=@seatCap, billAmount=@billAmount where vehicleID = @vehicleID", con);
+                SqlCommand cmd = new SqlCommand("UPDATE Vehicle SET fuelType = @fuelType, vehicleMake= @vehicleMake,vehicleType = @vehicleType where vehicleID = @vehicleID;" +
+                    "UPDATE Invoice SET noOfKiloMeters = @noOfKm,ratePerKiloMeter =@ratePerKM, seatingCapacity=@seatCap, billAmount=@billAmount where vehicleID = @vehicleID", con);
                 cmd.Parameters.AddWithValue("@vehicleID", vID);
                 cmd.Parameters.AddWithValue("@fuelType", mini.getFuelType());
                 cmd.Parameters.AddWithValue("@vehicleMake", mini.getVehicleMake());
@@ -278,8 +278,8 @@ namespace Automate_Transport_Billing_Database
             try
             {
                 maxi.validateEntry();
-                SqlCommand cmd = new SqlCommand("UPDATE Vehicle SET fuelType = @fuelType, vehicleMake= @vehicleMake,vehicleType = @vehicleType, noOfKiloMeters = @noOfKm,  ratePerKiloMeter = @ratePerKM where vehicleID = @vehicleID;" +
-                    "UPDATE Invoice SET loadInKG = @load, ratePerKG = @ratePerKG , billAmount=@billAmount where vehicleID = @vehicleID", con);
+                SqlCommand cmd = new SqlCommand("UPDATE Vehicle SET fuelType = @fuelType, vehicleMake= @vehicleMake,vehicleType = @vehicleType where vehicleID = @vehicleID;" +
+                    "UPDATE Invoice SET noOfKiloMeters = @noOfKm,ratePerKiloMeter =@ratePerKM,loadInKG = @load, ratePerKG = @ratePerKG , billAmount=@billAmount where vehicleID = @vehicleID", con);
                 cmd.Parameters.AddWithValue("@vehicleID", vID);
                 cmd.Parameters.AddWithValue("@fuelType", maxi.getFuelType());
                 cmd.Parameters.AddWithValue("@vehicleMake", maxi.getVehicleMake());
